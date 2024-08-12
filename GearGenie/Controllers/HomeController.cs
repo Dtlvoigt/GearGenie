@@ -1,4 +1,5 @@
 using GearGenie.Models;
+using GearGenie.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
