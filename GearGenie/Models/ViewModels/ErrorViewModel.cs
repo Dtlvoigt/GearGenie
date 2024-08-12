@@ -1,4 +1,4 @@
-namespace GearGenie.Models
+namespace GearGenie.Models.ViewModels
 {
     public class ErrorViewModel
     {
