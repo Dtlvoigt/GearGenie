@@ -5,9 +5,9 @@ namespace GearGenie.Models
     public class PlayerItem
     {
         [Key]
-        public int PlayerID { get; set; }
+        public required PlayerCharacter Character { get; set; }
         [Key]
-        public int ItemID { get; set; }
+        public required Item Item { get; set; }
         public int Quantity { get; set; } = 1;
     }
 }

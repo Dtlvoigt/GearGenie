@@ -5,9 +5,9 @@ namespace GearGenie.Models
     public class ShopItem
     {
         [Key]
-        public int ShopID { get; set; }
+        public required Shop Shop { get; set; }
         [Key]
-        public int ItemID { get; set; }
+        public required Item Item { get; set; }
         public int Quantity { get; set; } = 1;
         public string? ShopSection { get; set; }
     }
