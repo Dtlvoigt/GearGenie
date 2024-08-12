@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearGenie", "GearGenie\GearGenie.csproj", "{17EDE5D1-781B-4D25-BCA4-B58FF6C3887A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17EDE5D1-781B-4D25-BCA4-B58FF6C3887A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17EDE5D1-781B-4D25-BCA4-B58FF6C3887A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17EDE5D1-781B-4D25-BCA4-B58FF6C3887A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17EDE5D1-781B-4D25-BCA4-B58FF6C3887A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {755B584B-1EED-4EB5-8CA6-86A64F327510}
+	EndGlobalSection
+EndGlobal
