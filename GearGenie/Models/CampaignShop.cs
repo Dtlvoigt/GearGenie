@@ -5,8 +5,8 @@ namespace GearGenie.Models
     public class CampaignShop
     {
         [Key]
-        public required Campaign Campaign { get; set; }
+        public required int CampaignId { get; set; }
         [Key]
-        public required Shop Shop { get; set; }
+        public required int ShopId { get; set; }
     }
 }
