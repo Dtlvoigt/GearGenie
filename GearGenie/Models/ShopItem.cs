@@ -6,8 +6,12 @@ namespace GearGenie.Models
     {
         [Key]
         public required int ShopId { get; set; }
+        public Shop? Shop { get; set; } = null;
+
         [Key]
         public required int ItemId { get; set; }
+        public Item? Item { get; set; } = null;
+
         public int Quantity { get; set; } = 1;
         public string? ShopSection { get; set; }
     }
