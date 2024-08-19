@@ -1,4 +1,5 @@
 using GearGenie.Data;
+using GearGenie.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,9 @@ builder.Services.AddDbContext<IRPGInventoryDbContext, RPGInventoryDbContext>(opt
     options.UseSqlServer(connectionString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+//add service scope
+builder.Services.AddScoped<IRPGInventoryService, RPGInventoryService>();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
