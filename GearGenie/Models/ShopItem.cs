@@ -10,7 +10,7 @@ namespace GearGenie.Models
 
         [Key]
         public required int ItemId { get; set; }
-        public Item? Item { get; set; } = null;
+        public Equipment? Item { get; set; } = null;
 
         public int Quantity { get; set; } = 1;
         public string? ShopSection { get; set; }
