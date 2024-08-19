@@ -1,6 +1,16 @@
 ﻿namespace GearGenie.Services
 {
-    public class RPGInventoryService
+    public class RPGInventoryService : IRPGInventoryService
     {
+
+
+        //////////////////
+        // file loading //
+        //////////////////
+        
+        public async Task LoadEquipmentCategories()
+        {
+
+        }
     }
 }
