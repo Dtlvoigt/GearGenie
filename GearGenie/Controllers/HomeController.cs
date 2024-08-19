@@ -1,5 +1,7 @@
+using GearGenie.Data;
 using GearGenie.Models;
 using GearGenie.Models.ViewModels;
+using GearGenie.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,15 +9,18 @@ namespace GearGenie.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IRPGInventoryService _serviceContext;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IRPGInventoryService context, ILogger<HomeController> logger)
         {
+            _serviceContext = context;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
+            _serviceContext.LoadEquipmentCategories();
             return View();
         }
 
