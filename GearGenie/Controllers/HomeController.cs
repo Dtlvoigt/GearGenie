@@ -9,10 +9,10 @@ namespace GearGenie.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IRPGInventoryService _serviceContext;
+        private readonly IGearService _serviceContext;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(IRPGInventoryService context, ILogger<HomeController> logger)
+        public HomeController(IGearService context, ILogger<HomeController> logger)
         {
             _serviceContext = context;
             _logger = logger;
@@ -20,7 +20,7 @@ namespace GearGenie.Controllers
 
         public IActionResult Index()
         {
-            _serviceContext.LoadEquipmentCategories();
+            _serviceContext.LoadEquipmentCategories();///
             return View();
         }
 
