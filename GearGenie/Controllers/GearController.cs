@@ -7,12 +7,12 @@ using System.Diagnostics;
 
 namespace GearGenie.Controllers
 {
-    public class HomeController : Controller
+    public class GearController : Controller
     {
         private readonly IGearService _serviceContext;
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<GearController> _logger;
 
-        public HomeController(IGearService context, ILogger<HomeController> logger)
+        public GearController(IGearService context, ILogger<GearController> logger)
         {
             _serviceContext = context;
             _logger = logger;
