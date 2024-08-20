@@ -5,7 +5,7 @@ using System.Text.Json.Nodes;
 
 namespace GearGenie.Services
 {
-    public class RPGInventoryService : IRPGInventoryService
+    public class GearService : IGearService
     {
 
 

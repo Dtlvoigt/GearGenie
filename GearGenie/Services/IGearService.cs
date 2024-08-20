@@ -1,6 +1,6 @@
 ﻿namespace GearGenie.Services
 {
-    public interface IRPGInventoryService
+    public interface IGearService
     {
         //file loading
         Task LoadEquipmentCategories();
