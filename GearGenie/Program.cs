@@ -11,13 +11,13 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
-builder.Services.AddDbContext<IRPGInventoryDbContext, RPGInventoryDbContext>(options =>
+builder.Services.AddDbContext<IGearContext, GearContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 //add service scope
-builder.Services.AddScoped<IRPGInventoryService, RPGInventoryService>();
+builder.Services.AddScoped<IGearService, GearService>();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
