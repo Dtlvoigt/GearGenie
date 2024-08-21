@@ -37,7 +37,7 @@ namespace GearGenie.Models
         [JsonPropertyName("weapon_range")]
         public string? WeaponRange { get; set; }
         [JsonPropertyName("category_range")]
-        public RangeCategory? RangeCategory { get; set; }
+        public string? RangeCategory { get; set; }
         public int RangeNormal { get; set; } = 0;
         public int RangeLong { get; set; } = 0;
         public int ThrowRangeNormal { get; set; } = 0;
@@ -46,7 +46,7 @@ namespace GearGenie.Models
         public string? DamageDice { get; set; }
         [JsonPropertyName("damage_type")]
         public string? DamageType {  get; set; }
-        public List<WeaponProperty>? WeaponProperties { get; set; }
+        public ICollection<EquipmentWeaponProperty>? WeaponProperties { get; set; }
 
 
         //armor properties
