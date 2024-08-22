@@ -1,5 +1,4 @@
-﻿using GearGenie.Models.EquipmentTypes;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace GearGenie.Models

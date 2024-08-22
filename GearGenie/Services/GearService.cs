@@ -1,4 +1,4 @@
-﻿using GearGenie.Models.EquipmentTypes;
+﻿using GearGenie.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.Text.Json;
 using System.Text.Json.Nodes;
