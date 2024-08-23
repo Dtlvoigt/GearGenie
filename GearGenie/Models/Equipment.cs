@@ -45,6 +45,8 @@ namespace GearGenie.Models
         public string? DamageDice { get; set; }
         [JsonPropertyName("damage_type")]
         public string? DamageType {  get; set; }
+        [JsonPropertyName("special")]
+        public string? Special { get; set; }
         public ICollection<EquipmentWeaponProperty>? WeaponProperties { get; set; }
 
 
