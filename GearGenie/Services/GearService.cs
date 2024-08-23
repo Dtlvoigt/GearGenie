@@ -13,6 +13,11 @@ namespace GearGenie.Services
         // file loading //
         //////////////////
         
+        public async Task LoadEquipment()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task LoadEquipmentCategories()
         {
             var httpClient = new HttpClient();
@@ -25,6 +30,11 @@ namespace GearGenie.Services
                 JsonNode root = node.Root;
                 categories = JsonSerializer.Deserialize<List<EquipmentCategory>>(root["results"]);
             }
+        }
+
+        public Task LoadWeaponProperties()
+        {
+            throw new NotImplementedException();
         }
     }
 }
