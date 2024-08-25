@@ -20,16 +20,24 @@ namespace GearGenie.Services
 
         public async Task LoadEquipmentCategories()
         {
+            try
+            {
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync("https://www.dnd5eapi.co/api/equipment-categories");
             var categories = new List<EquipmentCategory>();
             if (response.IsSuccessStatusCode)
             {
                 var json = await response.Content.ReadAsStringAsync();
-                JsonNode? node = JsonNode.Parse(json);
-                JsonNode root = node.Root;
-                categories = JsonSerializer.Deserialize<List<EquipmentCategory>>(root["results"]);
+                    var document = JsonDocument.Parse(json);
+                    var root = document.RootElement.GetProperty("results");
+                    categories = JsonSerializer.Deserialize<List<EquipmentCategory>>(root);
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
         }
 
         public async Task<List<String>> LoadEquipmentURLs()
