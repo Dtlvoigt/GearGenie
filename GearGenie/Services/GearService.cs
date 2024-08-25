@@ -53,8 +53,8 @@ namespace GearGenie.Services
                 {
                     var json = await response.Content.ReadAsStringAsync();
                     var document = JsonDocument.Parse(json);
-                    equipmentURLs = document.RootElement.GetProperty("results")
-                                                        .EnumerateArray()
+                    var root = document.RootElement.GetProperty("results");
+                    equipmentURLs = root.EnumerateArray()
                                                         .Select(e => e.GetProperty("url").GetString())
                                                         .ToList();
                 }
