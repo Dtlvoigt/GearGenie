@@ -32,6 +32,33 @@ namespace GearGenie.Services
             }
         }
 
+        public async Task<List<String>> LoadEquipmentURLs()
+        {
+            var equipmentURLs = new List<String>();
+
+            try
+            {
+                var httpClient = new HttpClient();
+                var response = await httpClient.GetAsync("https://www.dnd5eapi.co/api/equipment");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    var document = JsonDocument.Parse(json);
+                    equipmentURLs = document.RootElement.GetProperty("results")
+                                                        .EnumerateArray()
+                                                        .Select(e => e.GetProperty("url").GetString())
+                                                        .ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return equipmentURLs;
+        }
+
         public Task LoadWeaponProperties()
         {
             throw new NotImplementedException();

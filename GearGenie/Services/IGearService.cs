@@ -5,6 +5,7 @@
         //file loading
         Task LoadEquipment();
         Task LoadEquipmentCategories();
+        Task<List<String>> LoadEquipmentURLs();
         Task LoadWeaponProperties();
     }
 }
