@@ -67,9 +67,27 @@ namespace GearGenie.Services
             return equipmentURLs;
         }
 
-        public Task LoadWeaponProperties()
+        public async Task LoadWeaponProperties()
         {
-            throw new NotImplementedException();
+            var weaponProperties = new List<WeaponProperty>();
+
+            try
+            {
+                var httpClient = new HttpClient();
+                var response = await httpClient.GetAsync("https://www.dnd5eapi.co/api/weapon-properties");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    var document = JsonDocument.Parse(json);
+                    var root = document.RootElement.GetProperty("results");
+                    weaponProperties = JsonSerializer.Deserialize<List<WeaponProperty>>(root);
+                }
+            }
+            catch (Exception e)
+        {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
