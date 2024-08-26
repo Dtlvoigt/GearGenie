@@ -12,22 +12,46 @@ namespace GearGenie.Services
         //////////////////
         // file loading //
         //////////////////
-        
+
         public async Task LoadEquipment()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var equipmentURLs = await LoadEquipmentURLs();
+                var equipmentList = new List<Equipment>();
+                foreach (var url in equipmentURLs)
+                {
+                    var httpClient = new HttpClient();
+                    var response = await httpClient.GetAsync("https://www.dnd5eapi.co" + url);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var json = await response.Content.ReadAsStringAsync();
+                        var document = JsonDocument.Parse(json);
+                        var equipment = JsonSerializer.Deserialize<Equipment>(document);
+                        if (equipment != null)
+                        {
+                            equipmentList.Add(equipment);
+                            Console.WriteLine(equipment.Name + " added.");
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         public async Task LoadEquipmentCategories()
         {
             try
             {
-            var httpClient = new HttpClient();
-            var response = await httpClient.GetAsync("https://www.dnd5eapi.co/api/equipment-categories");
-            var categories = new List<EquipmentCategory>();
-            if (response.IsSuccessStatusCode)
-            {
-                var json = await response.Content.ReadAsStringAsync();
+                var httpClient = new HttpClient();
+                var response = await httpClient.GetAsync("https://www.dnd5eapi.co/api/equipment-categories");
+                var categories = new List<EquipmentCategory>();
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
                     var document = JsonDocument.Parse(json);
                     var root = document.RootElement.GetProperty("results");
                     categories = JsonSerializer.Deserialize<List<EquipmentCategory>>(root);
@@ -37,7 +61,7 @@ namespace GearGenie.Services
             {
                 Console.WriteLine(e.Message);
             }
-            
+
         }
 
         public async Task<List<String>> LoadEquipmentURLs()
@@ -55,8 +79,8 @@ namespace GearGenie.Services
                     var document = JsonDocument.Parse(json);
                     var root = document.RootElement.GetProperty("results");
                     equipmentURLs = root.EnumerateArray()
-                                                        .Select(e => e.GetProperty("url").GetString())
-                                                        .ToList();
+                                        .Select(e => e.GetProperty("url").GetString())
+                                        .ToList();
                 }
             }
             catch (Exception e)
@@ -85,7 +109,7 @@ namespace GearGenie.Services
                 }
             }
             catch (Exception e)
-        {
+            {
                 Console.WriteLine(e.Message);
             }
         }
