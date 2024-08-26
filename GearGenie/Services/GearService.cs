@@ -30,6 +30,8 @@ namespace GearGenie.Services
                         var equipment = JsonSerializer.Deserialize<Equipment>(document);
                         if (equipment != null)
                         {
+                            //add nested properties to object
+
                             equipmentList.Add(equipment);
                             Console.WriteLine(equipment.Name + " added.");
                         }
@@ -107,6 +109,21 @@ namespace GearGenie.Services
                     var root = document.RootElement.GetProperty("results");
                     weaponProperties = JsonSerializer.Deserialize<List<WeaponProperty>>(root);
                 }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public async Task<Equipment> ParseEquipmentProperties(string json)
+        {
+            try
+            {
+                var document = JsonDocument.Parse(json);
+                var equipment = JsonSerializer.Deserialize<Equipment>(document);
+
+                return equipment;
             }
             catch (Exception e)
             {

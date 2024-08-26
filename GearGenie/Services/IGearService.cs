@@ -1,4 +1,6 @@
-﻿namespace GearGenie.Services
+﻿using GearGenie.Models;
+
+namespace GearGenie.Services
 {
     public interface IGearService
     {
@@ -7,5 +9,6 @@
         Task LoadEquipmentCategories();
         Task<List<String>> LoadEquipmentURLs();
         Task LoadWeaponProperties();
+        Task<Equipment> ParseEquipmentProperties(string json);
     }
 }
