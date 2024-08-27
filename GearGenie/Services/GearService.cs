@@ -35,8 +35,18 @@ namespace GearGenie.Services
                         {
                             //add nested properties to object
 
+                        //parse json for other equipment properties
+                        var equipment = await ParseEquipmentProperties(json);
+
+                        //add equipment to list unless parsing failed
+                        if(equipment != null && !String.IsNullOrEmpty(equipment.Name))
+                        {
                             equipmentList.Add(equipment);
                             Console.WriteLine(equipment.Name + " added.");
+                        }
+                        else
+                        {
+                            continue;
                         }
                     }
                 }
