@@ -19,6 +19,9 @@ namespace GearGenie.Services
             {
                 var equipmentURLs = await LoadEquipmentURLs();
                 var equipmentList = new List<Equipment>();
+                var equipmentURLs = await LoadEquipmentURLs();
+                var httpClient = new HttpClient();
+
                 foreach (var url in equipmentURLs)
                 {
                     var httpClient = new HttpClient();
@@ -129,6 +132,16 @@ namespace GearGenie.Services
             {
                 Console.WriteLine(e.Message);
             }
+
+        //////////////////////
+        // helper functions //
+        //////////////////////
+
+        public float ConvertMoneyToGold(float amount, string coinType)
+        {
+            throw new NotImplementedException();
         }
+
+        
     }
 }
