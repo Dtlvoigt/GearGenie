@@ -15,6 +15,12 @@ namespace GearGenie.Models
         Ranged
     }
 
+    public class Cost
+    {
+        public int quantity { get; set; }
+        public string? unit { get; set; }
+    }
+
     public class Equipment
     {
         [Key]
