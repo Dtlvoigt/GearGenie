@@ -73,20 +73,6 @@ namespace GearGenie.Models
         [JsonPropertyName("equipment_category")]
         public JsonElement EquipmentCategoryElement { get; set; }
         public string? EquipmentCategory => EquipmentCategoryElement.GetProperty("name").GetString();
-        //public string? EquipmentCategory
-        //{
-        //    get
-        //    {
-        //        //set property if json element is present
-        //        if (EquipmentCategoryElement.HasValue && EquipmentCategoryElement.Value.TryGetProperty("name", out JsonElement equipmentCategoryElement))
-        //        {
-        //            return equipmentCategoryElement.GetString();
-        //        }
-
-        //        //return null if this json element is missing
-        //        return null;
-        //    }
-        //}
 
         //adventuring gear properties
         [JsonPropertyName("gear_category")]
