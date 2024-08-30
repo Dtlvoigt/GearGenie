@@ -90,6 +90,21 @@ namespace GearGenie.Models
                 return null;
             }
         }
+        public string? DamageType
+        {
+            get
+            {
+                //check nested object for damage type property
+                if (DamageElement.HasValue && 
+                    DamageElement.Value.TryGetProperty("damage_type", out JsonElement damageTypeElement) &&
+                    damageTypeElement.TryGetProperty("name", out JsonElement damageTypeName)) 
+                {
+                    return damageTypeName.GetString();
+                }
+                //return null if this json element is missing
+                return null;
+            }
+        }
 
         [JsonPropertyName("gear_category")]
         public JsonElement? GearCategoryElement { get; set; }
