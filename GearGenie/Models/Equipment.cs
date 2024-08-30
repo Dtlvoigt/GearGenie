@@ -47,11 +47,11 @@ namespace GearGenie.Models
         public int RangeLong { get; set; } = 0;
         public int ThrowRangeNormal { get; set; } = 0;
         public int ThrowRangeLong { get; set; } = 0;
-        [JsonPropertyName("damage_dice")]
-        public string? DamageDice { get; set; }
-        [JsonPropertyName("damage_type")]
-        public string? DamageType {  get; set; }
-        [JsonPropertyName("special")]
+        //[JsonPropertyName("damage_dice")]
+        //public string? DamageDice { get; set; }
+        //[JsonPropertyName("damage_type")]
+        //public string? DamageType { get; set; }
+        //[JsonPropertyName("special")]
         public string? Special { get; set; }
         public ICollection<EquipmentWeaponProperty>? WeaponProperties { get; set; }
 
@@ -74,7 +74,23 @@ namespace GearGenie.Models
         public JsonElement EquipmentCategoryElement { get; set; }
         public string? EquipmentCategory => EquipmentCategoryElement.GetProperty("name").GetString();
 
-        //adventuring gear properties
+        [JsonPropertyName("damage")]
+        public JsonElement? DamageElement {  get; set; }
+        public string? DamageDice
+        {
+            get
+            {
+                //set property if json element is present
+                if (DamageElement.HasValue && DamageElement.Value.TryGetProperty("damage_dice", out JsonElement damageDiceElement))
+                {
+                    return damageDiceElement.GetString();
+                }
+
+                //return null if this json element is missing
+                return null;
+            }
+        }
+
         [JsonPropertyName("gear_category")]
         public JsonElement? GearCategoryElement { get; set; }
         public string? GearCategory
