@@ -1,26 +1,35 @@
 ﻿using Microsoft.Extensions.Hosting;
 using System.ComponentModel.DataAnnotations;
+using System.Linq.Expressions;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace GearGenie.Models
 {
-    public enum DamageType
-    {
-        Bludgeoning,
-        Piercing,
-        Slashing
-    }
-    public enum RangeCategory
-    {
-        Melee,
-        Ranged
-    }
-
     public class Cost
     {
         public int quantity { get; set; }
         public string? unit { get; set; }
+
+        //convert price to gold currency
+        public double ConverToGold(string unit, int amount)
+        {
+            switch (unit)
+            {
+                case "cp":
+                    return amount * .01;
+                case "sp":
+                    return amount * .1;
+                case "ep":
+                    return amount * 2;
+                case "gp":
+                    return amount;
+                case "pp":
+                    return amount * 10;
+                default:
+                    return amount;
+            }
+        }
     }
 
     public class Equipment
@@ -55,10 +64,6 @@ namespace GearGenie.Models
                 }
             }
         }
-
-        public int MoneyAmount { get; set; }
-
-        public string? MoneyType { get; set; }
 
         [JsonPropertyName("cost")]
         public Cost? CostElement { get; set; }
@@ -104,15 +109,6 @@ namespace GearGenie.Models
                 }
             }
         }
-        //public Cost Cost
-        //{
-        //    get => new Cost { quantity = MoneyAmount, unit = MoneyType };
-        //    set
-        //    {
-        //        MoneyAmount = value.quantity;
-        //        MoneyType = value.unit;
-        //    }
-        //}
 
         [JsonPropertyName("weight")]
         public decimal Weight { get; set; } = 0;
@@ -121,7 +117,7 @@ namespace GearGenie.Models
         /////////////////////
         //weapon properties//
         /////////////////////
-        
+
         [JsonPropertyName("weapon_category")]
         public string? WeaponCategory { get; set; }
 
@@ -291,7 +287,7 @@ namespace GearGenie.Models
         ////////////////////
         //armor properties//
         ////////////////////
-        
+
         [JsonPropertyName("armor_category")]
         public string? ArmorCategory { get; set; }
 
@@ -353,7 +349,7 @@ namespace GearGenie.Models
         ///////////////////
         //gear properties//
         ///////////////////
-        
+
         [JsonPropertyName("gear_category")]
         public JsonElement? GearCategoryElement { get; set; }
         public string? GearCategory
@@ -361,7 +357,7 @@ namespace GearGenie.Models
             get
             {
                 //set property if json element is present
-                if(GearCategoryElement.HasValue && GearCategoryElement.Value.TryGetProperty("name", out JsonElement gearCategoryElement))
+                if (GearCategoryElement.HasValue && GearCategoryElement.Value.TryGetProperty("name", out JsonElement gearCategoryElement))
                 {
                     return gearCategoryElement.GetString();
                 }
