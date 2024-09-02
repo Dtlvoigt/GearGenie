@@ -106,6 +106,37 @@ namespace GearGenie.Models
             }
         }
 
+        [JsonPropertyName("range")]
+        public JsonElement? RangeElement { get; set; }
+        public int RangeNormal
+        {
+            get
+            {
+                //set property if json element is present
+                if (RangeElement.HasValue && RangeElement.Value.TryGetProperty("normal", out JsonElement rangeNormalElement))
+                {
+                    return rangeNormalElement.GetInt32();
+                }
+
+                //return null if this json element is missing
+                return 0;
+            }
+        }
+        public int RangeLong
+        {
+            get
+            {
+                //set property if json element is present
+                if (RangeElement.HasValue && RangeElement.Value.TryGetProperty("long", out JsonElement rangeLongElement))
+                {
+                    return rangeLongElement.GetInt32();
+                }
+
+                //return null if this json element is missing
+                return 0;
+            }
+        }
+
         [JsonPropertyName("gear_category")]
         public JsonElement? GearCategoryElement { get; set; }
         public string? GearCategory
