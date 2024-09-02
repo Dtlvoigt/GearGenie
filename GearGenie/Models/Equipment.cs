@@ -62,7 +62,10 @@ namespace GearGenie.Models
         public decimal Weight { get; set; } = 0;
 
 
-        //weapon properties
+        /////////////////////
+        //weapon properties//
+        /////////////////////
+        
         [JsonPropertyName("weapon_category")]
         public string? WeaponCategory { get; set; }
 
@@ -214,24 +217,57 @@ namespace GearGenie.Models
         public ICollection<EquipmentWeaponProperty>? WeaponProperties { get; set; }
 
 
-        //armor properties
+        ////////////////////
+        //armor properties//
+        ////////////////////
+        
         [JsonPropertyName("armor_category")]
         public string? ArmorCategory { get; set; }
 
-        //[JsonPropertyName("base")]
-        public int ArmorClass { get; set; } = 0;
-
-        [JsonPropertyName("dex_bonus")]
-        public bool? DexBonus { get; set; }
+        [JsonPropertyName("armor_class")]
+        public JsonElement? ArmorClassElement { get; set; }
+        public int ArmorClass
+        {
+            get
+            {
+                //set property if json element is present
+                if (ArmorClassElement.HasValue && ArmorClassElement.Value.TryGetProperty("base", out JsonElement armorClassElement))
+                {
+                    return armorClassElement.GetInt32();
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+        public bool? DexBonus
+        {
+            get
+            {
+                //set property if json element is present
+                if (ArmorClassElement.HasValue && ArmorClassElement.Value.TryGetProperty("dex_bonus", out JsonElement dexBonusElement))
+                {
+                    return dexBonusElement.GetBoolean();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
 
         [JsonPropertyName("str_minimum")]
-        public int StrengthMinimum { get; set; } = 0;
+        public int? StrengthMinimum { get; set; }
 
         [JsonPropertyName("stealth_disadvantage")]
         public bool? StealthDisadvantage { get; set; }
 
 
-        //gear properties
+        ///////////////////
+        //gear properties//
+        ///////////////////
+        
         [JsonPropertyName("gear_category")]
         public JsonElement? GearCategoryElement { get; set; }
         public string? GearCategory
