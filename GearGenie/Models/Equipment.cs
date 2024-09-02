@@ -83,9 +83,10 @@ namespace GearGenie.Models
                 {
                     return rangeNormalElement.GetInt32();
                 }
-
-                //return null if this json element is missing
-                return 0;
+                else
+                {
+                    return 0;
+                }
             }
         }
         public int RangeLong
@@ -97,9 +98,10 @@ namespace GearGenie.Models
                 {
                     return rangeLongElement.GetInt32();
                 }
-
-                //return null if this json element is missing
-                return 0;
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -114,9 +116,10 @@ namespace GearGenie.Models
                 {
                     return throwRangeNormalElement.GetInt32();
                 }
-
-                //return null if this json element is missing
-                return 0;
+                else
+                {
+                    return 0;
+                }
             }
         }
         public int ThrowRangeLong
@@ -128,9 +131,10 @@ namespace GearGenie.Models
                 {
                     return throwRangeLongElement.GetInt32();
                 }
-
-                //return null if this json element is missing
-                return 0;
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -145,9 +149,10 @@ namespace GearGenie.Models
                 {
                     return damageDiceElement.GetString();
                 }
-
-                //return null if this json element is missing
-                return null;
+                else
+                {
+                    return null;
+                }
             }
         }
         public string? DamageType
@@ -198,7 +203,8 @@ namespace GearGenie.Models
                 }
                 else
                 {
-                return null;
+                    return null;
+                }
             }
         }
 
