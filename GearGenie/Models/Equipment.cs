@@ -77,7 +77,7 @@ namespace GearGenie.Models
 
         [JsonPropertyName("range")]
         public JsonElement? RangeElement { get; set; }
-        public int RangeNormal
+        public int? RangeNormal
         {
             get
             {
@@ -88,11 +88,11 @@ namespace GearGenie.Models
                 }
                 else
                 {
-                    return 0;
+                    return null;
                 }
             }
         }
-        public int RangeLong
+        public int? RangeLong
         {
             get
             {
@@ -103,14 +103,14 @@ namespace GearGenie.Models
                 }
                 else
                 {
-                    return 0;
+                    return null;
                 }
             }
         }
 
         [JsonPropertyName("throw_range")]
         public JsonElement? ThrowRangeElement { get; set; }
-        public int ThrowRangeNormal
+        public int? ThrowRangeNormal
         {
             get
             {
@@ -121,11 +121,11 @@ namespace GearGenie.Models
                 }
                 else
                 {
-                    return 0;
+                    return null;
                 }
             }
         }
-        public int ThrowRangeLong
+        public int? ThrowRangeLong
         {
             get
             {
@@ -136,7 +136,7 @@ namespace GearGenie.Models
                 }
                 else
                 {
-                    return 0;
+                    return null;
                 }
             }
         }
@@ -226,7 +226,7 @@ namespace GearGenie.Models
 
         [JsonPropertyName("armor_class")]
         public JsonElement? ArmorClassElement { get; set; }
-        public int ArmorClass
+        public int? ArmorClass
         {
             get
             {
@@ -237,7 +237,7 @@ namespace GearGenie.Models
                 }
                 else
                 {
-                    return 0;
+                    return null;
                 }
             }
         }
