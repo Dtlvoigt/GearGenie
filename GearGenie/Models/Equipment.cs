@@ -211,8 +211,23 @@ namespace GearGenie.Models
             }
         }
 
-        //[JsonPropertyName("special")]
-        public string? Special { get; set; }
+        [JsonPropertyName("special")]
+        public JsonElement? SpecialAttributeElement { get; set; }
+        public string? SpecialAttribute
+        {
+            get
+            {
+                if (SpecialAttributeElement.HasValue && SpecialAttributeElement.Value.ValueKind == JsonValueKind.Array)
+                {
+                    // Extract all strings from the array and join them with a symbol, e.g., "; "
+                    return string.Join("; ", SpecialAttributeElement.Value.EnumerateArray().Select(s => s.GetString()));
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
 
         public ICollection<EquipmentWeaponProperty>? WeaponProperties { get; set; }
 
