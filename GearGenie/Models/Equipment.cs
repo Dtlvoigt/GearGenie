@@ -38,8 +38,23 @@ namespace GearGenie.Models
         public JsonElement EquipmentCategoryElement { get; set; }
         public string? EquipmentCategory => EquipmentCategoryElement.GetProperty("name").GetString();
 
-        //[JsonPropertyName("desc")]
-        public string? Description { get; set; }
+        [JsonPropertyName("desc")]
+        public JsonElement? DescriptionElement { get; set; }
+        public string? Description
+        {
+            get
+            {
+                if (DescriptionElement.HasValue && DescriptionElement.Value.ValueKind == JsonValueKind.Array)
+                {
+                    // Extract all strings from the array and join them with a symbol, e.g., "; "
+                    return string.Join("; ", DescriptionElement.Value.EnumerateArray().Select(d => d.GetString()));
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
 
         public int MoneyAmount { get; set; }
 
