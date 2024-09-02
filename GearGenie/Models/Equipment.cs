@@ -62,7 +62,48 @@ namespace GearGenie.Models
 
         [JsonPropertyName("cost")]
         public Cost? CostElement { get; set; }
-        public float Cost { get; set; } = 0;
+        public int? CostAmount
+        {
+            get
+            {
+                if (CostElement != null)
+                {
+                    return CostElement.quantity;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+        public string? CostType
+        {
+            get
+            {
+                if (CostElement != null)
+                {
+                    return CostElement.unit;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+        public double GoldCost
+        {
+            get
+            {
+                if (CostElement != null && !String.IsNullOrWhiteSpace(CostType) && CostAmount != null)
+                {
+                    return CostElement.ConverToGold(CostType, CostAmount.Value);
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
         //public Cost Cost
         //{
         //    get => new Cost { quantity = MoneyAmount, unit = MoneyType };
