@@ -256,6 +256,21 @@ namespace GearGenie.Models
                 }
             }
         }
+        public int? MaxDexBonus
+        {
+            get
+            {
+                //set property if json element is present
+                if (ArmorClassElement.HasValue && ArmorClassElement.Value.TryGetProperty("max_bonus", out JsonElement maxDexBonusElement))
+                {
+                    return maxDexBonusElement.GetInt32();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
 
         [JsonPropertyName("str_minimum")]
         public int? StrengthMinimum { get; set; }
