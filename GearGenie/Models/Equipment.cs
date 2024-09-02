@@ -161,7 +161,43 @@ namespace GearGenie.Models
                 {
                     return damageTypeName.GetString();
                 }
-                //return null if this json element is missing
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        [JsonPropertyName("two_handed_damage")]
+        public JsonElement? TwoHandedElement { get; set; }
+        public string? TwoHandedDamageDice
+        {
+            get
+            {
+                //set property if json element is present
+                if (TwoHandedElement.HasValue && TwoHandedElement.Value.TryGetProperty("damage_dice", out JsonElement damageDiceElement))
+                {
+                    return damageDiceElement.GetString();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+        public string? TwoHandedDamageType
+        {
+            get
+            {
+                //check nested object for damage type property
+                if (TwoHandedElement.HasValue &&
+                    TwoHandedElement.Value.TryGetProperty("damage_type", out JsonElement damageTypeElement) &&
+                    damageTypeElement.TryGetProperty("name", out JsonElement damageTypeName))
+                {
+                    return damageTypeName.GetString();
+                }
+                else
+                {
                 return null;
             }
         }
