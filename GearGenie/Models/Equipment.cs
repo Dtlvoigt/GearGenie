@@ -48,15 +48,15 @@ namespace GearGenie.Models
         public string? EquipmentCategory => EquipmentCategoryElement.GetProperty("name").GetString();
 
         [JsonPropertyName("desc")]
-        public JsonElement? DescriptionElement { get; set; }
+        public JsonElement DescriptionElement { get; set; }
         public string? Description
         {
             get
             {
-                if (DescriptionElement.HasValue && DescriptionElement.Value.ValueKind == JsonValueKind.Array)
+                if (DescriptionElement.ValueKind == JsonValueKind.Array)
                 {
                     // Extract all strings from the array and join them with a symbol, e.g., "; "
-                    return string.Join("; ", DescriptionElement.Value.EnumerateArray().Select(d => d.GetString()));
+                    return string.Join("; ", DescriptionElement.EnumerateArray().Select(d => d.GetString()));
                 }
                 else
                 {
@@ -65,53 +65,54 @@ namespace GearGenie.Models
             }
         }
 
-        [JsonPropertyName("cost")]
-        public Cost? CostElement { get; set; }
-        public int? CostAmount
-        {
-            get
-            {
-                if (CostElement != null)
-                {
-                    return CostElement.quantity;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
-        public string? CostType
-        {
-            get
-            {
-                if (CostElement != null)
-                {
-                    return CostElement.unit;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
-        public double GoldCost
-        {
-            get
-            {
-                if (CostElement != null && !String.IsNullOrWhiteSpace(CostType) && CostAmount != null)
-                {
-                    return CostElement.ConverToGold(CostType, CostAmount.Value);
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        //[JsonPropertyName("cost")]
+        //public Cost? CostElement { get; set; }
+        //public int? CostAmount
+        //{
+        //    get
+        //    {
+        //        if (CostElement != null)
+        //        {
+        //            return CostElement.quantity;
+        //        }
+        //        else
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //}
+        //public string? CostType
+        //{
+        //    get
+        //    {
+        //        if (CostElement != null)
+        //        {
+        //            return CostElement.unit;
+        //        }
+        //        else
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //}
+        //public double GoldCost
+        //{
+        //    get
+        //    {
+        //        if (CostElement != null && !String.IsNullOrWhiteSpace(CostType) && CostAmount != null)
+        //        {
+        //            return CostElement.ConverToGold(CostType, CostAmount.Value);
+        //        }
+        //        else
+        //        {
+        //            return 0;
+        //        }
+        //    }
+        //}
 
         [JsonPropertyName("weight")]
         public decimal Weight { get; set; } = 0;
+        //public decimal Weight2 { get; set; } = 0;
 
 
         /////////////////////
@@ -281,7 +282,7 @@ namespace GearGenie.Models
             }
         }
 
-        public ICollection<EquipmentWeaponProperty>? WeaponProperties { get; set; }
+        //public ICollection<EquipmentWeaponProperty>? WeaponProperties { get; set; }
 
 
         ////////////////////
