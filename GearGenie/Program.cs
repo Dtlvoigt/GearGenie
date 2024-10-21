@@ -13,6 +13,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDbContext<IGearContext, GearContext>(options =>
     options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<IEquipmentContext, EquipmentContext>(options =>
+    options.UseSqlServer(connectionString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
