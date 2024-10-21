@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
-namespace GearGenie.Models
+namespace GearGenie.Models.InventoryModels
 {
     public class Campaign
     {

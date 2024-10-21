@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GearGenie.Models
+namespace GearGenie.Models.InventoryModels
 {
     public class CampaignShop
     {
@@ -12,6 +12,6 @@ namespace GearGenie.Models
         public required int ShopId { get; set; }
         public Shop? Shop { get; set; } = null;
 
-        
+
     }
 }
