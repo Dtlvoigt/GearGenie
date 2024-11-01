@@ -20,6 +20,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 //add service scope
 builder.Services.AddScoped<IGearService, GearService>();
+builder.Services.AddScoped<IEquipmentService, EquipmentService>();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
