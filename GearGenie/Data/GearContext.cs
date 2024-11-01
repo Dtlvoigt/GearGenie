@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using GearGenie.Models.EquipmentModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace GearGenie.Data
 {
@@ -6,6 +7,7 @@ namespace GearGenie.Data
     {
         public GearContext(DbContextOptions<GearContext> options) : base(options) { }
 
-        //public virtual DbSet<>
+        //public virtual DbSet<Equipment> Equipment { get; set; }
+        //public virtual DbSet<EquipmentCategory> EquipmentCategories { get; set; }
     }
 }
