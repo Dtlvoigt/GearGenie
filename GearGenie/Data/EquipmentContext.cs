@@ -17,11 +17,11 @@ namespace GearGenie.Data
         {
         }
 
-        public DbSet<Equipment> Equipment { get; set; }
-        public DbSet<EquipmentCategory> Categories { get; set; }
-        public DbSet<WeaponProperty> WeaponProperties { get; set; }
-        public DbSet<EquipmentWeaponProperty> EquipmentWeaponProperties { get; set; }
-        public DbSet<PackContent> PackContents { get; set; }
+        public virtual DbSet<Equipment> Equipment { get; set; }
+        public virtual DbSet<EquipmentCategory> Categories { get; set; }
+        public virtual DbSet<WeaponProperty> WeaponProperties { get; set; }
+        public virtual DbSet<EquipmentWeaponProperty> EquipmentWeaponProperties { get; set; }
+        public virtual DbSet<PackContent> PackContents { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
