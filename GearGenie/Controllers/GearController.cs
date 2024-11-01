@@ -9,18 +9,29 @@ namespace GearGenie.Controllers
 {
     public class GearController : Controller
     {
-        private readonly IGearService _serviceContext;
+        //private readonly IGearService _serviceContext;
+        private readonly IEquipmentService _equipmentContext;
         private readonly ILogger<GearController> _logger;
 
-        public GearController(IGearService context, ILogger<GearController> logger)
+        public GearController(IGearService gearContext, IEquipmentService equipmentContext, ILogger<GearController> logger)
         {
-            _serviceContext = context;
+            //_serviceContext = gearContext;
+            _equipmentContext = equipmentContext;
             _logger = logger;
+
+
+            
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            _serviceContext.LoadEquipmentCategories();///
+            //_serviceContext.LoadEquipmentCategories();///
+            //_serviceContext.LoadWeaponProperties();
+            //_serviceContext.LoadEquipment();
+            await _equipmentContext.DatabaseTests();
+            
+
+
             return View();
         }
 
