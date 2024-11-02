@@ -1,4 +1,5 @@
 ﻿using GearGenie.Models;
+using GearGenie.Models.EquipmentModels;
 
 namespace GearGenie.Services
 {

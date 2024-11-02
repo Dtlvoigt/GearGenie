@@ -1,4 +1,5 @@
 ﻿using GearGenie.Models;
+using GearGenie.Models.EquipmentModels;
 using Microsoft.IdentityModel.Tokens;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -8,7 +9,6 @@ namespace GearGenie.Services
     public class GearService : IGearService
     {
 
-
         //////////////////
         // file loading //
         //////////////////
@@ -17,23 +17,16 @@ namespace GearGenie.Services
         {
             try
             {
-                var equipmentURLs = await LoadEquipmentURLs();
                 var equipmentList = new List<Equipment>();
                 var equipmentURLs = await LoadEquipmentURLs();
                 var httpClient = new HttpClient();
 
                 foreach (var url in equipmentURLs)
                 {
-                    var httpClient = new HttpClient();
                     var response = await httpClient.GetAsync("https://www.dnd5eapi.co" + url);
                     if (response.IsSuccessStatusCode)
                     {
                         var json = await response.Content.ReadAsStringAsync();
-                        var document = JsonDocument.Parse(json);
-                        var equipment = JsonSerializer.Deserialize<Equipment>(document);
-                        if (equipment != null)
-                        {
-                            //add nested properties to object
 
                         //parse json for other equipment properties
                         var equipment = await ParseEquipmentProperties(json);
@@ -59,11 +52,13 @@ namespace GearGenie.Services
 
         public async Task LoadEquipmentCategories()
         {
+            var categories = new List<EquipmentCategory>();
+
             try
             {
                 var httpClient = new HttpClient();
                 var response = await httpClient.GetAsync("https://www.dnd5eapi.co/api/equipment-categories");
-                var categories = new List<EquipmentCategory>();
+                
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
@@ -136,12 +131,16 @@ namespace GearGenie.Services
                 var document = JsonDocument.Parse(json);
                 var equipment = JsonSerializer.Deserialize<Equipment>(document);
 
+                //create weapon properties relationships
+
                 return equipment;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                return new Equipment() { Name = "" };
             }
+        }
 
         //////////////////////
         // helper functions //
