@@ -13,6 +13,6 @@ namespace GearGenie.Models.InventoryModels
         public required int ItemId { get; set; }
         public Equipment? Item { get; set; } = null;
 
-        public int Quantity { get; set; } = 1;
+        public int Amount { get; set; } = 1;
     }
 }
