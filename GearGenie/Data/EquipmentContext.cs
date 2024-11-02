@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GearGenie.Models.InventoryModels;
 
 namespace GearGenie.Data
 {
@@ -22,6 +23,8 @@ namespace GearGenie.Data
         public virtual DbSet<WeaponProperty> WeaponProperties { get; set; }
         public virtual DbSet<EquipmentWeaponProperty> EquipmentWeaponProperties { get; set; }
         public virtual DbSet<PackContent> PackContents { get; set; }
+        public virtual DbSet<PlayerCharacter> PlayerCharacters { get; set; }
+        public virtual DbSet<PlayerItem> PlayerItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
