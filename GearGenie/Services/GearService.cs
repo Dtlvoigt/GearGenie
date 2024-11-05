@@ -1,5 +1,7 @@
-﻿using GearGenie.Models;
+﻿using GearGenie.Data;
+using GearGenie.Models;
 using GearGenie.Models.EquipmentModels;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -8,6 +10,12 @@ namespace GearGenie.Services
 {
     public class GearService : IGearService
     {
+        private IGearContext _gearContext;
+
+        public GearService(IGearContext gearContext)
+        {
+            _gearContext = gearContext;
+        }
 
         //////////////////
         // file loading //
@@ -140,6 +148,18 @@ namespace GearGenie.Services
                 Console.WriteLine(e.Message);
                 return new Equipment() { Name = "" };
             }
+        }
+
+        public async Task DatabaseTests()
+        {
+            //var categories = await _gearContext.Categories.ToListAsync();
+            var equipment = await _gearContext.Equipment.Include(e => e.WeaponProperties).Include(e => e.PackContents).ToListAsync();
+            var weaponProperties = await _gearContext.WeaponProperties.ToListAsync();
+            var pcRelationships = await _gearContext.PackContents.ToListAsync();
+            var wpRelationships = await _gearContext.EquipmentWeaponProperties.ToListAsync();
+            var weapons = await _gearContext.Equipment.Where(e => e.Category == "Weapon").Include(e => e.WeaponProperties).ToListAsync();
+            var variantItems = await _gearContext.Equipment.Where(e => e.HasVariant).ToListAsync();
+            var packsAndContents = await _gearContext.Equipment.Where(e => e.GearCategory == "Equipment Packs").Include(e => e.PackContents).ToListAsync();
         }
 
         //////////////////////

@@ -12,6 +12,9 @@ namespace GearGenie.Services
         Task LoadWeaponProperties();
         Task<Equipment> ParseEquipmentProperties(string json);
 
+
+        Task DatabaseTests();
+
         //helper functions
         float ConvertMoneyToGold(float amount, string coinType);
     }
