@@ -85,6 +85,14 @@ namespace GearGenie.Data
             //define the composite key for PlayerItems
             modelBuilder.Entity<PlayerItem>()
                 .HasKey (e => new { e.ItemId, e.PlayerCharacterId });
+
+            //define the composite key for CampaignShops
+            modelBuilder.Entity<CampaignShop>()
+                .HasKey(e => new { e.CampaignId, e.ShopId });
+
+            //define the composite key for ShopItems
+            modelBuilder.Entity<ShopItem>()
+                .HasKey(e => new { e.ShopId, e.ItemId });
         }
     }
 }
