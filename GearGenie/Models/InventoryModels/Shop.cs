@@ -6,7 +6,6 @@ namespace GearGenie.Models.InventoryModels
     {
         [Key]
         public int Id { get; set; }
-
         public ICollection<ShopItem>? Items { get; set; }
     }
 }
