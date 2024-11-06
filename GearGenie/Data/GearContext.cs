@@ -13,8 +13,13 @@ namespace GearGenie.Data
         public virtual DbSet<WeaponProperty> WeaponProperties { get; set; }
         public virtual DbSet<EquipmentWeaponProperty> EquipmentWeaponProperties { get; set; }
         public virtual DbSet<PackContent> PackContents { get; set; }
+        public virtual DbSet<Campaign> Campaigns { get; set; }
+        public virtual DbSet<CampaignShop> CampaignShops { get; set; }
         public virtual DbSet<PlayerCharacter> PlayerCharacters { get; set; }
         public virtual DbSet<PlayerItem> PlayerItems { get; set; }
+        public virtual DbSet<Shop> Shops { get; set; }
+        public virtual DbSet<ShopItem> ShopItems { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
