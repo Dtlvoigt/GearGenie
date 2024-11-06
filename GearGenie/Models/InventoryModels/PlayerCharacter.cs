@@ -8,7 +8,6 @@ namespace GearGenie.Models.InventoryModels
         public int Id { get; set; }
         public required int CampaignId { get; set; }
         public int? OwnerId { get; set; }
-
         public ICollection<PlayerItem>? Items { get; set; }
     }
 }

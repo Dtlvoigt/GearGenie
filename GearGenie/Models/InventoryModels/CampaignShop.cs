@@ -8,7 +8,5 @@ namespace GearGenie.Models.InventoryModels
         public Campaign? Campaign { get; set; } = null;
         public required int ShopId { get; set; }
         public Shop? Shop { get; set; } = null;
-
-
     }
 }
