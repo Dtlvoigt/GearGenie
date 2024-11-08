@@ -22,13 +22,8 @@ namespace GearGenie.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //_serviceContext.LoadEquipmentCategories();///
-            //_serviceContext.LoadWeaponProperties();
-            //_serviceContext.LoadEquipment();
-            await _gearContext.DatabaseTests();
+            //await _gearContext.DatabaseTests();
             
-
-
             return View();
         }
 
