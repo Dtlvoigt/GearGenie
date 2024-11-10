@@ -22,7 +22,6 @@ namespace GearGenie.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //await _gearContext.DatabaseTests();
             
             return View();
         }
