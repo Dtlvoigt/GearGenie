@@ -1,10 +1,11 @@
-﻿using GearGenie.Models.InventoryModels;
+﻿using GearGenie.Models.EquipmentModels;
+using GearGenie.Models.InventoryModels;
 
 namespace GearGenie.Models.ViewModels
 {
-    public class Equipment
+    public class EquipmentViewModel
     {
-        public Equipment equipment { get; set; }
+        public Equipment Equipment { get; set; }
         public List<Campaign> Campaigns { get; set; }
         public List<PlayerCharacter> PlayerCharacters { get; set; }
         public List<Shop> Shops { get; set; }
