@@ -4,9 +4,9 @@ namespace GearGenie.Models.ViewModels
 {
     public class ShopViewModel
     {
-        public List<Campaign> Campaign { get; set; }
+        public Shop Shop { get; set; }
+        public List<Campaign> Campaigns { get; set; }
         public List<PlayerCharacter> PlayerCharacters { get; set; }
-        Shop Shop { get; set; }
         public List<Shop> Shops { get; set; }
     }
 }
