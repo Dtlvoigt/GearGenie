@@ -6,6 +6,6 @@ namespace GearGenie.Models.ViewModels
     public class PlayerInventoryViewModel
     {
         public PlayerCharacter PlayerCharacter {  get; set; }
-        public Equipment Equipment { get; set; }
+        public List<PlayerItem> PlayerItems { get; set; }
     }
 }
