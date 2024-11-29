@@ -2,8 +2,11 @@ using GearGenie.Data;
 using GearGenie.Models;
 using GearGenie.Models.ViewModels;
 using GearGenie.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace GearGenie.Controllers
 {
@@ -20,8 +23,19 @@ namespace GearGenie.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
+        //[Authorize]
         public async Task<IActionResult> Index()
         {
+            try
+            {
+                var userID = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? throw new Exception("userID is null");
+                var user = new IdentityUser(userID);
+            }
+            catch (Exception ex) 
+            {
+                return RedirectToAction("IndexVisitor");
+            }
             
             return View();
         }
