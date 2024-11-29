@@ -167,23 +167,18 @@ namespace GearGenie.Services
             }
         }
 
-        public async Task<Equipment> ParseEquipmentProperties(string json)
+        /////////////////////
+        // update database //
+        /////////////////////
+
+        public async Task<int> AddCampaign(Campaign campaign)
         {
-            try
-            {
-                var document = JsonDocument.Parse(json);
-                var equipment = JsonSerializer.Deserialize<Equipment>(document);
+            await _gearContext.Campaigns.AddAsync(campaign).ConfigureAwait(false);
+            await _gearContext.SaveChangesAsync(CancellationToken.None).ConfigureAwait(false);
 
-                //create weapon properties relationships
-
-                return equipment;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return new Equipment() { Name = "" };
-            }
+            return campaign.Id;
         }
+
 
         public async Task DatabaseTests()
         {
