@@ -12,5 +12,15 @@
 
 <div class="text-center">
     <br /><br /><br />
-    <a id="newCampaignButton" asp-action="NewCampaign" class="btn btn-success col-sm-4">New Campaign</a>
+    @{
+        if(Model.UserAuthorized)
+        {
+            <a id="newCampaignButton" asp-action="NewCampaign" class="btn btn-success col-sm-4">New Campaign</a>
+        }
+        else
+        {
+            <a id="newCampaignButton" asp-action="NewCampaign" class="btn btn-success col-sm-4 disabled">New Campaign</a>
+        }
+    } 
+   
 </div>
