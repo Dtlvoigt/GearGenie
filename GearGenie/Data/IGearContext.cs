@@ -17,5 +17,8 @@ namespace GearGenie.Data
         DbSet<PlayerItem> PlayerItems { get; set; }
         DbSet<Shop> Shops { get; set; }
         DbSet<ShopItem> ShopItems { get; set; }
+
+        int SaveChanges();
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }
