@@ -1,16 +1,24 @@
 ﻿using GearGenie.Models;
 using GearGenie.Models.EquipmentModels;
+using GearGenie.Models.InventoryModels;
 
 namespace GearGenie.Services
 {
     public interface IGearService
     {
+        //search database
+        Task<List<Campaign>> GetCampaigns(string userID);
+
+        //update database
+        Task<int> AddCampaign(Campaign campaign);
+
+
         //file loading
-        Task LoadEquipment();
-        Task LoadEquipmentCategories();
-        Task<List<String>> LoadEquipmentURLs();
-        Task LoadWeaponProperties();
-        Task<Equipment> ParseEquipmentProperties(string json);
+        //Task LoadEquipment();
+        //Task LoadEquipmentCategories();
+        //Task<List<String>> LoadEquipmentURLs();
+        //Task LoadWeaponProperties();
+        //Task<Equipment> ParseEquipmentProperties(string json);
 
 
         Task DatabaseTests();

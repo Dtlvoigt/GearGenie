@@ -67,7 +67,7 @@ namespace GearGenie.Services
         //    {
         //        var httpClient = new HttpClient();
         //        var response = await httpClient.GetAsync("https://www.dnd5eapi.co/api/equipment-categories");
-                
+
         //        if (response.IsSuccessStatusCode)
         //        {
         //            var json = await response.Content.ReadAsStringAsync();
@@ -156,15 +156,9 @@ namespace GearGenie.Services
         /////////////////////
 
         public async Task<List<Campaign>> GetCampaigns(string userID)
-                {
+        {
             var campaigns = await _gearContext.Campaigns.Where(i => i.OwnerId == userID).ToListAsync();
             return campaigns;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
         }
 
         /////////////////////
