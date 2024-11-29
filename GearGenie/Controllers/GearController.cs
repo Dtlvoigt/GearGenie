@@ -24,20 +24,22 @@ namespace GearGenie.Controllers
         }
 
         [HttpGet]
-        //[Authorize]
         public async Task<IActionResult> Index()
         {
-            try
+            //certain features are disabled if the user isn't logged in
+            var homeVM = new HomeViewModel();
+            if (User.Identity != null && !User.Identity.IsAuthenticated)
             {
-                var userID = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? throw new Exception("userID is null");
-                var user = new IdentityUser(userID);
+                homeVM.UserAuthorized = false;
             }
-            catch (Exception ex) 
+            else
             {
-                return RedirectToAction("IndexVisitor");
+                homeVM.UserAuthorized = true;
+                var userID = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? throw new Exception("userID is null");
+                homeVM.Campaigns = await _gearContext.GetCampaigns(userID).ConfigureAwait(false);
             }
             
-            return View();
+            return View(homeVM);
         }
 
         public IActionResult Privacy()
