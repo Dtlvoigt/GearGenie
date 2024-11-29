@@ -10,6 +10,8 @@ namespace GearGenie.Models.InventoryModels
         [Required(ErrorMessage = "Campaign name is required")]
         public required string Name { get; set; }
         public required string OwnerId { get; set; }
+        public required DateTime DateCreated { get; set; }
+        public required DateTime LastUpdated { get; set; }
         public string? Admins { get; set; } //option to allow multiple users to manage a campaign
         public ICollection<CampaignShop>? Shops { get; set; }
     }
