@@ -25,12 +25,7 @@ namespace GearGenie.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Ignore<Equipment>();
-            modelBuilder.Ignore<EquipmentCategory>();
-            modelBuilder.Ignore<EquipmentVariant>();
-            modelBuilder.Ignore<EquipmentWeaponProperty>();
-            modelBuilder.Ignore<PackContent>();
-            modelBuilder.Ignore<WeaponProperty>();
+            
 
             //name values are unique so that duplicate records don't get inserted
             modelBuilder.Entity<Equipment>()
@@ -81,6 +76,13 @@ namespace GearGenie.Data
                 .WithMany()
                 .HasForeignKey(pc => pc.ContentId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            //modelBuilder.Ignore<Equipment>();
+            //modelBuilder.Ignore<EquipmentCategory>();
+            ////modelBuilder.Ignore<EquipmentVariant>();
+            //modelBuilder.Ignore<EquipmentWeaponProperty>();
+            //modelBuilder.Ignore<PackContent>();
+            //modelBuilder.Ignore<WeaponProperty>();
 
             //define the composite key for PlayerItems
             modelBuilder.Entity<PlayerItem>()
