@@ -1,6 +1,7 @@
 ﻿using GearGenie.Data;
 using GearGenie.Models;
 using GearGenie.Models.EquipmentModels;
+using GearGenie.Models.InventoryModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text.Json;
@@ -154,12 +155,10 @@ namespace GearGenie.Services
         // search database //
         /////////////////////
 
-                if (response.IsSuccessStatusCode)
+        public async Task<List<Campaign>> GetCampaigns(string userID)
                 {
-                    var json = await response.Content.ReadAsStringAsync();
-                    var document = JsonDocument.Parse(json);
-                    var root = document.RootElement.GetProperty("results");
-                    weaponProperties = JsonSerializer.Deserialize<List<WeaponProperty>>(root);
+            var campaigns = await _gearContext.Campaigns.Where(i => i.OwnerId == userID).ToListAsync();
+            return campaigns;
                 }
             }
             catch (Exception e)
