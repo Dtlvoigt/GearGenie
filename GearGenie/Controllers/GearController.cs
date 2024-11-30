@@ -42,6 +42,14 @@ namespace GearGenie.Controllers
             return View(homeVM);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> NewCampaign()
+        {
+            var newCampaignVM = new NewCampaignViewModel();
+
+            return View(newCampaignVM);
+        }
+
         public IActionResult Privacy()
         {
             return View();
