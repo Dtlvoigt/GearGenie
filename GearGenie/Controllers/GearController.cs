@@ -50,6 +50,25 @@ namespace GearGenie.Controllers
             return View(newCampaignVM);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> NewCampaign(NewCampaignViewModel newCampaignVM)
+        {
+            if (newCampaignVM == null)
+            {
+                throw new Exception("Campaign view model missing data");
+            }
+
+            if(ModelState.IsValid)
+            {
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(newCampaignVM);
+            }
+        }
+
         public IActionResult Privacy()
         {
             return View();
