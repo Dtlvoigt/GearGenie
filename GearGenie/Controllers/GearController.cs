@@ -69,6 +69,33 @@ namespace GearGenie.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<IActionResult> NewPlayerCharacter()
+        {
+            var newPCVM = new NewPlayerCharacterViewModel();
+
+            return View(newPCVM);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> NewPlayerCharacter(NewPlayerCharacterViewModel newPCVM)
+        {
+            if (newPCVM == null)
+            {
+                throw new Exception("Campaign view model missing data");
+            }
+
+            if (ModelState.IsValid)
+            {
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(newPCVM);
+            }
+        }
+
         public IActionResult Privacy()
         {
             return View();
