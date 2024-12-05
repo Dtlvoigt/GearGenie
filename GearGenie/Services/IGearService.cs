@@ -8,6 +8,8 @@ namespace GearGenie.Services
     {
         //search database
         Task<List<Campaign>> GetCampaigns(string userID);
+        Task<List<PlayerCharacter>> GetUserPlayerCharacters(string userID);
+        Task<List<PlayerCharacter>> GetCampaignPlayerCharacters(int campaignID);
 
         //update database
         Task<int> AddCampaign(Campaign campaign);
