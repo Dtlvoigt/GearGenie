@@ -13,6 +13,7 @@ namespace GearGenie.Services
 
         //update database
         Task<int> AddCampaign(Campaign campaign);
+        Task<int> AddPlayerCharacter(PlayerCharacter playerCharacter, int campaignID = 0);
 
 
         //file loading
