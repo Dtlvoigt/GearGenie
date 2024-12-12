@@ -11,6 +11,8 @@ namespace GearGenie.Services
         Task<List<PlayerCharacter>> GetUserPlayerCharacters(string userID);
         Task<List<PlayerCharacter>> GetCampaignPlayerCharacters(int campaignID);
         Task<List<PlayerItem>> GetPlayerItems(string userID);
+        Task<List<Shop>> GetShops();
+        Task<List<Shop>> GetCampaignShops(int campaignID);
 
         //update database
         Task<int> AddCampaign(Campaign campaign);
