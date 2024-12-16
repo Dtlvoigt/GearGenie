@@ -161,6 +161,36 @@ namespace GearGenie.Services
             return campaigns;
         }
 
+        public Task<List<PlayerCharacter>> GetUserPlayerCharacters(string userID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<PlayerCharacter>> GetCampaignPlayerCharacters(int campaignID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<PlayerItem>> GetPlayerItems(string userID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Shop>> GetShops()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Shop>> GetCampaignShops(int campaignID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> AddPlayerCharacter(PlayerCharacter playerCharacter, int campaignID = 0)
+        {
+            throw new NotImplementedException();
+        }
+
         /////////////////////
         // update database //
         /////////////////////
@@ -194,7 +224,5 @@ namespace GearGenie.Services
         {
             throw new NotImplementedException();
         }
-
-        
     }
 }
