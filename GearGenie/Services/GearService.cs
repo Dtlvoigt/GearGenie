@@ -204,6 +204,15 @@ namespace GearGenie.Services
         }
 
 
+        //////////////////////
+        // helper functions //
+        //////////////////////
+
+        public float ConvertMoneyToGold(float amount, string coinType)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task DatabaseTests()
         {
             //var categories = await _gearContext.Categories.ToListAsync();
@@ -214,15 +223,6 @@ namespace GearGenie.Services
             var weapons = await _gearContext.Equipment.Where(e => e.Category == "Weapon").Include(e => e.WeaponProperties).ToListAsync();
             var variantItems = await _gearContext.Equipment.Where(e => e.HasVariant).ToListAsync();
             var packsAndContents = await _gearContext.Equipment.Where(e => e.GearCategory == "Equipment Packs").Include(e => e.PackContents).ToListAsync();
-        }
-
-        //////////////////////
-        // helper functions //
-        //////////////////////
-
-        public float ConvertMoneyToGold(float amount, string coinType)
-        {
-            throw new NotImplementedException();
         }
     }
 }
